@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peak360 | O auge do seu momento</title>
+  <meta name="description" content="Peak360 — Experiências imersivas, plataforma 360°, fotografia e filmagem para eventos sociais e corporativos. O auge do seu momento.">
+  <meta name="keywords" content="Peak360, foto 360, filmagem eventos, fotografia eventos, experiências interativas, cobertura de eventos">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #000; }
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    .glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .float { animation: float 6s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-black">
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Peak360Site() {
+      const [menuOpen, setMenuOpen] = useState(false);
+
+      const navLinks = [
+        { href: "#sobre", label: "Sobre" },
+        { href: "#servicos", label: "Serviços" },
+        { href: "#galeria", label: "Galeria" },
+        { href: "#contato", label: "Contato" },
+      ];
+
+      const services = [
+        {
+          icon: "⟳",
+          title: "Plataforma 360°",
+          description: "Experiência imersiva e interativa com câmera 360° de última geração. Vídeos cinematográficos com efeitos exclusivos que encantam e surpreendem os convidados.",
+          highlight: true,
+        },
+        {
+          icon: "📷",
+          title: "Fotografia",
+          description: "Cobertura fotográfica completa do seu evento. Captamos cada detalhe, emoção e momento especial com qualidade e sensibilidade profissional.",
+          highlight: false,
+        },
+        {
+          icon: "🎬",
+          title: "Filmagem",
+          description: "Produção audiovisual profissional com equipamentos de alta definição. Do registro ao teaser, entregamos memórias em vídeo que duram para sempre.",
+          highlight: false,
+        },
+      ];
+
+      const stats = [
+        { value: "500+", label: "Eventos realizados" },
+        { value: "360°", label: "Experiência imersiva" },
+        { value: "100%", label: "Satisfação garantida" },
+        { value: "4K", label: "Qualidade de imagem" },
+      ];
+
+      const eventTypes = [
+        "Casamentos", "Formaturas", "Festas de 15 anos",
+        "Eventos corporativos", "Aniversários", "Confraternizações",
+        "Lançamentos de produto", "Festivais",
+      ];
+
+      return (
+        <div className="min-h-screen bg-black text-white">
+
+          {/* HEADER */}
+          <header className="sticky top-0 z-50 border-b border-white/5 bg-black/90 backdrop-blur-xl">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
+              <a href="#home" className="flex items-center gap-3">
+                <img src="logo.jpeg" alt="Peak360" className="h-10 w-auto rounded-lg" />
+                <div className="hidden sm:block">
+                  <span className="text-lg font-bold tracking-wider text-white">PEAK</span>
+                  <span className="text-lg font-bold tracking-wider text-sky-400">360</span>
+                </div>
+              </a>
+
+              <nav className="hidden gap-8 text-sm text-slate-400 md:flex">
+                {navLinks.map(l => (
+                  <a key={l.href} href={l.href} className="transition hover:text-sky-400">{l.label}</a>
+                ))}
+              </nav>
+
+              <a href="#contato"
+                className="hidden rounded-full bg-sky-500 px-5 py-2 text-sm font-semibold text-white transition hover:bg-sky-400 md:block">
+                Solicitar orçamento
+              </a>
+
+              <button className="flex flex-col gap-1.5 p-2 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+                <span className={`block h-0.5 w-6 bg-slate-300 transition-all duration-300 ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
+                <span className={`block h-0.5 w-6 bg-slate-300 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+                <span className={`block h-0.5 w-6 bg-slate-300 transition-all duration-300 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+              </button>
+            </div>
+
+            {menuOpen && (
+              <div className="border-t border-white/5 bg-black/95 px-6 pb-4 md:hidden">
+                {navLinks.map(l => (
+                  <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
+                    className="block py-3 text-sm text-slate-300 transition hover:text-sky-400 border-b border-white/5 last:border-0">
+                    {l.label}
+                  </a>
+                ))}
+                <a href="#contato" onClick={() => setMenuOpen(false)}
+                  className="mt-4 block rounded-full bg-sky-500 px-5 py-2.5 text-center text-sm font-semibold text-white">
+                  Solicitar orçamento
+                </a>
+              </div>
+            )}
+          </header>
+
+          {/* HERO */}
+          <section id="home" className="relative min-h-screen overflow-hidden flex items-center">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.15),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(14,165,233,0.08),transparent_50%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-sky-500/40 to-transparent" />
+
+            <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-0 w-full">
+              <div className="grid items-center gap-12 md:grid-cols-2">
+                <div>
+                  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-4 py-2 text-sm text-sky-300">
+                    <span className="h-2 w-2 rounded-full bg-sky-400 glow-pulse inline-block"></span>
+                    Experiências premium em eventos
+                  </div>
+
+                  <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl md:text-7xl md:leading-[1.0]">
+                    O auge do<br />
+                    <span className="text-sky-400">seu momento.</span>
+                  </h1>
+
+                  <p className="mt-6 max-w-xl text-base leading-8 text-slate-400 md:text-lg">
+                    Transformamos eventos em experiências inesquecíveis com plataforma 360°,
+                    fotografia e filmagem profissional. Do detalhe à emoção — capturamos tudo.
+                  </p>
+
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <a href="#contato"
+                      className="rounded-full bg-sky-500 px-7 py-3.5 font-semibold text-white shadow-lg shadow-sky-500/25 transition hover:-translate-y-0.5 hover:bg-sky-400">
+                      Solicitar orçamento
+                    </a>
+                    <a href="#servicos"
+                      className="rounded-full border border-white/15 bg-white/5 px-7 py-3.5 font-semibold text-white transition hover:border-sky-500/40 hover:bg-white/10">
+                      Conheça os serviços
+                    </a>
+                  </div>
+
+                  <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                    {stats.map((s) => (
+                      <div key={s.label} className="rounded-2xl border border-white/8 bg-white/3 p-4 text-center">
+                        <div className="text-2xl font-black text-sky-400">{s.value}</div>
+                        <div className="mt-1 text-xs text-slate-500">{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex justify-center md:justify-end">
+                  <div className="relative float">
+                    <div className="absolute -inset-8 rounded-full bg-sky-500/20 blur-3xl glow-pulse"></div>
+                    <div className="relative rounded-3xl border border-sky-500/20 bg-white/3 p-6 backdrop-blur-sm">
+                      <img src="logo.jpeg" alt="Peak360" className="w-64 rounded-2xl md:w-80" />
+                      <div className="mt-4 text-center">
+                        <div className="text-sm font-semibold tracking-widest text-sky-400 uppercase">O auge do seu momento</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* SOBRE */}
+          <section id="sobre" className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
+            <div className="grid gap-10 md:grid-cols-2 items-center">
+              <div>
+                <span className="text-sm font-semibold uppercase tracking-widest text-sky-400">Quem somos</span>
+                <h2 className="mt-3 text-3xl font-black text-white md:text-5xl">Experiências que <span className="text-sky-400">marcam</span></h2>
+                <p className="mt-6 leading-8 text-slate-400">
+                  A Peak360 nasceu da paixão por transformar momentos comuns em memórias extraordinárias.
+                  Combinamos tecnologia de ponta com sensibilidade artística para entregar experiências
+                  únicas em cada evento que participamos.
+                </p>
+                <p className="mt-4 leading-8 text-slate-400">
+                  Atendemos eventos sociais e corporativos de todos os portes, sempre com profissionalismo,
+                  pontualidade e o compromisso de superar expectativas.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {eventTypes.map(t => (
+                    <span key={t} className="rounded-full border border-sky-500/20 bg-sky-500/5 px-4 py-1.5 text-sm text-sky-300">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { title: "Tecnologia", desc: "Equipamentos de última geração para resultados excepcionais" },
+                  { title: "Criatividade", desc: "Cada evento tem sua identidade única e especial" },
+                  { title: "Pontualidade", desc: "Compromisso total com horários e entregas" },
+                  { title: "Qualidade", desc: "Padrão premium em todos os nossos serviços" },
+                ].map(item => (
+                  <div key={item.title} className="rounded-2xl border border-white/8 bg-white/3 p-5">
+                    <div className="text-sky-400 font-bold text-lg">{item.title}</div>
+                    <div className="mt-2 text-sm text-slate-400 leading-6">{item.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* SERVIÇOS */}
+          <section id="servicos" className="relative py-16 md:py-24">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,165,233,0.06),transparent_60%)]" />
+            <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+              <div className="text-center mb-12">
+                <span className="text-sm font-semibold uppercase tracking-widest text-sky-400">O que oferecemos</span>
+                <h2 className="mt-3 text-3xl font-black text-white md:text-5xl">Nossos <span className="text-sky-400">serviços</span></h2>
+                <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
+                  Soluções completas de experiência e cobertura para o seu evento, do início ao fim.
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-3">
+                {services.map(s => (
+                  <div key={s.title}
+                    className={`rounded-3xl border p-8 transition hover:-translate-y-1 ${s.highlight
+                      ? "border-sky-500/40 bg-gradient-to-b from-sky-500/10 to-transparent shadow-lg shadow-sky-500/10"
+                      : "border-white/8 bg-white/3 hover:border-sky-500/20"}`}>
+                    {s.highlight && (
+                      <div className="mb-4 inline-flex rounded-full bg-sky-500/20 px-3 py-1 text-xs font-semibold text-sky-300">
+                        ✦ Destaque
+                      </div>
+                    )}
+                    <div className="text-4xl mb-4">{s.icon}</div>
+                    <h3 className="text-xl font-bold text-white">{s.title}</h3>
+                    <p className="mt-3 leading-7 text-slate-400 text-sm">{s.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* PLATAFORMA 360 */}
+          <section id="plataforma360" className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
+            <div className="rounded-3xl border border-sky-500/20 bg-gradient-to-br from-sky-500/8 to-transparent p-8 md:p-12">
+              <div className="grid gap-10 md:grid-cols-2 items-center">
+                <div>
+                  <span className="text-sm font-semibold uppercase tracking-widest text-sky-400">Experiência imersiva</span>
+                  <h2 className="mt-3 text-3xl font-black text-white md:text-5xl">Plataforma <span className="text-sky-400">360°</span></h2>
+                  <p className="mt-6 leading-8 text-slate-400">
+                    A nossa plataforma 360° é a atração que todos querem! Uma experiência única onde os
+                    convidados são filmados em câmera lenta com efeitos cinematográficos e trilha sonora
+                    personalizada. O resultado é um vídeo incrível, pronto para compartilhar nas redes sociais.
+                  </p>
+                  <ul className="mt-6 space-y-3">
+                    {[
+                      "Câmera de alta velocidade (slow motion)",
+                      "Efeitos visuais e overlays personalizados",
+                      "Trilha sonora personalizada para o evento",
+                      "Entrega imediata via QR Code ou link",
+                      "Operador profissional dedicado",
+                    ].map(item => (
+                      <li key={item} className="flex items-center gap-3 text-sm text-slate-300">
+                        <span className="h-1.5 w-1.5 rounded-full bg-sky-400 shrink-0"></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="#contato"
+                    className="mt-8 inline-flex rounded-full bg-sky-500 px-6 py-3 font-semibold text-white transition hover:bg-sky-400">
+                    Quero no meu evento
+                  </a>
+                </div>
+
+                <div className="flex justify-center">
+                  <div className="relative">
+                    <div className="absolute -inset-6 rounded-full bg-sky-500/15 blur-3xl"></div>
+                    <div className="relative rounded-3xl border border-sky-500/30 bg-black p-8 text-center">
+                      <div className="text-8xl mb-4">⟳</div>
+                      <div className="text-6xl font-black text-sky-400">360°</div>
+                      <div className="mt-2 text-slate-400 text-sm">Experiência imersiva completa</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* GALERIA */}
+          <section id="galeria" className="relative py-16 md:py-24">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,165,233,0.05),transparent_60%)]" />
+            <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+              <div className="text-center mb-12">
+                <span className="text-sm font-semibold uppercase tracking-widest text-sky-400">Nosso trabalho</span>
+                <h2 className="mt-3 text-3xl font-black text-white md:text-5xl">Galeria de <span className="text-sky-400">eventos</span></h2>
+                <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
+                  Cada foto e vídeo conta uma história. Em breve, nossa galeria completa de momentos inesquecíveis.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                {[1,2,3,4,5,6].map(i => (
+                  <div key={i} className="aspect-square rounded-2xl border border-white/8 bg-white/3 flex items-center justify-center">
+                    <div className="text-center p-4">
+                      <div className="text-3xl mb-2">📸</div>
+                      <div className="text-xs text-slate-500">Em breve</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 text-center">
+                <a href="https://instagram.com/peak.360" target="_blank"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-sky-500/40">
+                  Ver mais no Instagram
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* CONTATO */}
+          <section id="contato" className="mx-auto max-w-7xl px-6 pb-20 md:px-10">
+            <div className="rounded-3xl border border-sky-500/20 bg-gradient-to-br from-sky-500/8 to-transparent p-8 md:p-12 text-center">
+              <span className="text-sm font-semibold uppercase tracking-widest text-sky-400">Fale conosco</span>
+              <h2 className="mt-3 text-3xl font-black text-white md:text-5xl">
+                Vamos criar algo <span className="text-sky-400">incrível?</span>
+              </h2>
+              <p className="mt-4 text-slate-400 max-w-xl mx-auto">
+                Entre em contato e descubra como a Peak360 pode transformar o seu evento em uma experiência inesquecível.
+              </p>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-2 max-w-xl mx-auto">
+                <a href="https://wa.me/55" target="_blank"
+                  className="flex items-center justify-center gap-3 rounded-2xl border border-green-500/30 bg-green-500/10 p-5 transition hover:border-green-500/50 hover:bg-green-500/15">
+                  <span className="text-2xl">💬</span>
+                  <div className="text-left">
+                    <div className="text-xs text-green-400 font-semibold">WhatsApp</div>
+                    <div className="text-sm font-bold text-white">Chamar agora</div>
+                  </div>
+                </a>
+
+                <a href="https://instagram.com/peak.360" target="_blank"
+                  className="flex items-center justify-center gap-3 rounded-2xl border border-pink-500/30 bg-pink-500/10 p-5 transition hover:border-pink-500/50 hover:bg-pink-500/15">
+                  <span className="text-2xl">📸</span>
+                  <div className="text-left">
+                    <div className="text-xs text-pink-400 font-semibold">Instagram</div>
+                    <div className="text-sm font-bold text-white">@peak.360</div>
+                  </div>
+                </a>
+              </div>
+
+              <div className="mt-8">
+                <a href="#contato"
+                  className="inline-flex rounded-full bg-sky-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-sky-500/25 transition hover:-translate-y-0.5 hover:bg-sky-400">
+                  Solicitar orçamento
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* FOOTER */}
+          <footer className="border-t border-white/5 px-6 py-8 md:px-10">
+            <div className="mx-auto max-w-7xl flex flex-col items-center gap-4 md:flex-row md:justify-between">
+              <div className="flex items-center gap-3">
+                <img src="logo.jpeg" alt="Peak360" className="h-8 w-auto rounded-md" />
+                <span className="text-sm text-slate-500">O auge do seu momento</span>
+              </div>
+              <div className="text-xs text-slate-600">© 2026 Peak360. Todos os direitos reservados.</div>
+              <div className="flex gap-4 text-sm text-slate-500">
+                <a href="https://instagram.com/peak.360" target="_blank" className="transition hover:text-sky-400">Instagram</a>
+                <a href="https://wa.me/55" target="_blank" className="transition hover:text-sky-400">WhatsApp</a>
+              </div>
+            </div>
+          </footer>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Peak360Site />);
+  </script>
+</body>
+</html>
