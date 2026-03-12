@@ -48,9 +48,9 @@
           highlight: true,
         },
         {
-          icon: "📷",
+          icon: "📱",
           title: "StoryMaker",
-          description: "Fotografia profissional para eventos. Cada clique conta uma história — imagens com qualidade, estilo e emoção para guardar para sempre.",
+          description: "Cobertura em tempo real para o Instagram do seu evento. Stories, Reels e fotos espontâneas produzidos e postados durante a festa — engajamento ao vivo, memória digital para sempre.",
           highlight: false,
         },
       ];
@@ -288,6 +288,77 @@
                       <div className="mt-2 text-slate-400 text-sm">Experiência imersiva completa</div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* STORYMAKER */}
+          <section id="storymaker" className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
+            <div className="rounded-3xl border border-pink-500/20 bg-gradient-to-br from-pink-500/6 to-transparent p-8 md:p-12">
+              <div className="grid gap-10 md:grid-cols-2 items-center">
+
+                <div className="flex justify-center md:order-first order-last">
+                  <div className="relative">
+                    <div className="absolute -inset-6 rounded-full bg-pink-500/10 blur-3xl"></div>
+                    <div className="relative rounded-3xl border border-pink-500/30 bg-black p-8 text-center min-w-[220px]">
+                      <div className="text-7xl mb-3">📱</div>
+                      <div className="text-2xl font-black text-white">Story<span className="text-pink-400">Maker</span></div>
+                      <div className="mt-3 space-y-2">
+                        {["Stories", "Reels", "Fotos", "Highlights"].map(t => (
+                          <div key={t} className="rounded-full border border-pink-500/20 bg-pink-500/5 px-3 py-1 text-xs text-pink-300">{t}</div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="text-sm font-semibold uppercase tracking-widest text-pink-400">Fotografia & Redes Sociais</span>
+                  <h2 className="mt-3 text-3xl font-black text-white md:text-5xl">Story<span className="text-pink-400">Maker</span></h2>
+                  <p className="mt-6 leading-8 text-slate-400">
+                    Um profissional dedicado a criar e postar conteúdo em tempo real durante o seu evento.
+                    Stories, Reels, fotos espontâneas e interação com o público — tudo publicado enquanto a festa acontece.
+                  </p>
+
+                  <div className="mt-6 grid grid-cols-2 gap-4">
+                    {[
+                      { icon: "📡", title: "Cobertura ao vivo", desc: "Stories e bastidores durante todo o evento" },
+                      { icon: "🎬", title: "Reels na hora", desc: "5 a 10 Reels produzidos e postados no dia" },
+                      { icon: "⚡", title: "Edição imediata", desc: "Cortes, legendas, stickers e marcações" },
+                      { icon: "📊", title: "Engajamento real", desc: "Alcance ao vivo e memória digital do evento" },
+                    ].map(item => (
+                      <div key={item.title} className="rounded-2xl border border-white/8 bg-white/3 p-4">
+                        <div className="text-xl mb-1">{item.icon}</div>
+                        <div className="text-sm font-bold text-white">{item.title}</div>
+                        <div className="mt-1 text-xs text-slate-400 leading-5">{item.desc}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6">
+                    <div className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">O pacote inclui</div>
+                    <ul className="space-y-2">
+                      {[
+                        "Cobertura de Stories durante todo o evento",
+                        "5–10 Reels produzidos na hora",
+                        "Fotos espontâneas dos convidados",
+                        "Interação com o público",
+                        "Postagem no Instagram do cliente",
+                        "Highlights do evento",
+                      ].map(item => (
+                        <li key={item} className="flex items-center gap-3 text-sm text-slate-300">
+                          <span className="h-1.5 w-1.5 rounded-full bg-pink-400 shrink-0"></span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <a href="#contato"
+                    className="mt-8 inline-flex rounded-full bg-pink-500 px-6 py-3 font-semibold text-white transition hover:bg-pink-400">
+                    Quero no meu evento
+                  </a>
                 </div>
               </div>
             </div>
