@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peak360 | O auge do seu momento</title>
-  <meta name="description" content="Peak360 — Experiências imersivas, plataforma 360°, fotografia e filmagem para eventos sociais e corporativos. O auge do seu momento.">
-  <meta name="keywords" content="Peak360, foto 360, filmagem eventos, fotografia eventos, experiências interativas, cobertura de eventos">
+  <meta name="description" content="Peak360 — Plataforma 360° e StoryMaker para eventos sociais e corporativos. O auge do seu momento.">
+  <meta name="keywords" content="Peak360, plataforma 360, foto 360, StoryMaker, fotografia eventos, experiências interativas">
   <script src="https://cdn.tailwindcss.com"></script>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -49,14 +49,8 @@
         },
         {
           icon: "📷",
-          title: "Fotografia",
-          description: "Cobertura fotográfica completa do seu evento. Captamos cada detalhe, emoção e momento especial com qualidade e sensibilidade profissional.",
-          highlight: false,
-        },
-        {
-          icon: "🎬",
-          title: "Filmagem",
-          description: "Produção audiovisual profissional com equipamentos de alta definição. Do registro ao teaser, entregamos memórias em vídeo que duram para sempre.",
+          title: "StoryMaker",
+          description: "Fotografia profissional para eventos. Cada clique conta uma história — imagens com qualidade, estilo e emoção para guardar para sempre.",
           highlight: false,
         },
       ];
@@ -233,7 +227,7 @@
                 </p>
               </div>
 
-              <div className="grid gap-6 md:grid-cols-3">
+              <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
                 {services.map(s => (
                   <div key={s.title}
                     className={`rounded-3xl border p-8 transition hover:-translate-y-1 ${s.highlight
