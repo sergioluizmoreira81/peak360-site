@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://peak360.com.br/sitemap.xml
